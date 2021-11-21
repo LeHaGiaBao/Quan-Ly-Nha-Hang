@@ -20,4 +20,5 @@ Thông tin đánh giá bao gồm: Mã đánh giá, Đánh giá, Giá trung bình
 8. In ra số lượng nhà hàng có giá trung bình trên 500000 đông và số lượng nhà hàng có giá trung bình dưới 500000 đồng (SL_TREN, SL_DUOI)
 
 **Bảng câu hỏi đầy đủ**
+
 ![Question](./Question.PNG)
