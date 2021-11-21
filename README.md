@@ -19,6 +19,6 @@ Thông tin đánh giá bao gồm: Mã đánh giá, Đánh giá, Giá trung bình
 7. In ra các vị trí (MAVT, QUAN, THANHPHO) không có nhà hàng nào được đánh giá
 8. In ra số lượng nhà hàng có giá trung bình trên 500000 đông và số lượng nhà hàng có giá trung bình dưới 500000 đồng (SL_TREN, SL_DUOI)
 
-**Bảng câu hỏi đầy đủ**
+**Bảng câu hỏi đầy đủ:**
 
 ![Question](./Question.PNG)
