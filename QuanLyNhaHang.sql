@@ -1,0 +1,84 @@
+﻿--1 Tạo và nhập dữ liệu cho các quan hệ trên
+CREATE DATABASE QuanLyHangHoa
+GO
+
+USE QuanLyHangHoa
+GO
+
+--2 Khai báo các khóa chính và khóa ngoại của quan hệ
+CREATE TABLE NHAHANG (
+	MANH char(4),
+	TENNH varchar(40),
+	AMTHUC varchar(20),
+	MAVT char(4),
+	MADG char(4),
+	CONSTRAINT PK_NHAHANG PRIMARY KEY (MANH)
+);
+
+CREATE TABLE VITRI (
+	MAVT char(4),
+	QUAN varchar(40),
+	THANHPHO varchar(40),
+	CONSTRAINT PK_VITRI PRIMARY KEY (MAVT)
+);
+
+CREATE TABLE DANHGIA (
+	MADG char(4),
+	DANHGIA float,
+	GIATB money,
+	SLDG int,
+	CONSTRAINT PK_DANHGIA PRIMARY KEY (MADG),
+);
+
+ALTER TABLE NHAHANG ADD CONSTRAINT FK_NHAHANG01 FOREIGN KEY (MAVT) REFERENCES VITRI (MAVT);
+ALTER TABLE NHAHANG ADD CONSTRAINT FK_NHAHANG02 FOREIGN KEY (MADG) REFERENCES DANHGIA (MADG);
+
+INSERT INTO NHAHANG VALUES ('NH01', 'Sushi Ngon', 'Nhat Ban', 'VT01', 'DG01');
+INSERT INTO NHAHANG VALUES ('NH02', 'Tiem banh New York', 'My', 'VT03', 'DG02');
+INSERT INTO NHAHANG VALUES ('NH03', 'Tiem tra Hoang Gia', 'My', 'VT01', 'DG03');
+INSERT INTO NHAHANG VALUES ('NH04', 'Bun bo Hue', 'Viet Nam', 'VT01', 'DG04');
+
+INSERT INTO VITRI VALUES ('VT01', 'Thu Duc', ' Ho Chi Minh');
+INSERT INTO VITRI VALUES ('VT02', 'Phu Nhuan', 'Ho Chi Minh');
+INSERT INTO VITRI VALUES ('VT03', 'Ba Dinh', 'Ha Noi');
+
+INSERT INTO DANHGIA VALUES ('DG01', 3.5, 200000, 1531);
+INSERT INTO DANHGIA VALUES ('DG02', 2.5, 550000, 324);
+INSERT INTO DANHGIA VALUES ('DG03', 4.5, 420000, 83);
+INSERT INTO DANHGIA VALUES ('DG04', 4.5, 80000, 815);
+
+--3 Giá trung bình của các nhà hàng ở Ba Đình phải trên 50000 đồng
+--Sử dụng TRIGGER
+
+--4 Thêm vào thuộc tính GHICHU có kiểu dữ liệu varchar(40) cho quan hệ DANHGIA
+ALTER TABLE DANHGIA ADD GHICHU varchar(40);
+
+--5 In ra các nhà hàng (MANH, TENNH) phục vụ các món ăn của nền ẩm thực Mỹ
+SELECT MANH, TENNH
+FROM NHAHANG
+WHERE AMTHUC = 'My';
+
+--6 In ra các nhà hàng (MANH, TENNH, DANHGIA, GIATB, SLDG) ở thành phố Hồ Chí Minh
+--theo thứ tự tăng dần về đánh giá và giảm dần về giá trung bình
+SELECT MANH, TENNH, DANHGIA, GIATB, SLDG
+FROM NHAHANG, DANHGIA, VITRI
+WHERE NHAHANG.MADG = DANHGIA.MADG
+AND VITRI.MAVT = NHAHANG.MAVT
+AND THANHPHO = 'Ho Chi Minh'
+ORDER BY DANHGIA ASC, GIATB DESC;
+
+--7 In ra các vị trí (MAVT, QUAN, THANHPHO) không có nhà hàng nào được đánh giá
+SELECT VT.MAVT, QUAN, THANHPHO 
+FROM VITRI VT LEFT JOIN NHAHANG NH 
+ON VT.MAVT = NH.MAVT
+WHERE MADG IS NULL;
+
+--8 In ra số lượng nhà hàng có giá trung bình trên 500000 đồng và số lượng nhà hàng có giá trung
+--bình dưới 500000 đồng (SL_TREN, SL_DUOI)
+SELECT COUNT(MANH) 'SL_TREN', (SELECT COUNT(MANH)
+							   FROM NHAHANG, DANHGIA
+							   WHERE NHAHANG.MADG = DANHGIA.MADG
+							   AND GIATB < 500000) 'SL_DUOI'
+FROM NHAHANG, DANHGIA
+WHERE NHAHANG.MADG = DANHGIA.MADG
+AND GIATB >= 500000;
