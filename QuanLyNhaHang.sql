@@ -1,8 +1,8 @@
 ﻿--1 Tạo và nhập dữ liệu cho các quan hệ trên
-CREATE DATABASE QuanLyHangHoa
+CREATE DATABASE QuanLyNhaHang
 GO
 
-USE QuanLyHangHoa
+USE QuanLyNhaHang
 GO
 
 --2 Khai báo các khóa chính và khóa ngoại của quan hệ
