@@ -1,15 +1,25 @@
-**<h1>Cho cơ sở dữ liệu sau:</h1>**
+**<h1>CƠ SỞ DỮ LIỆU</h1>**
 
-📌NHAHANG(<u>MANH</u>, TENNH, AMTHUC, MAVT, MADG)
+<div align="center">
+
+![GitHub repo size](https://img.shields.io/github/repo-size/LeHaGiaBao/Quan-Ly-Nha-Hang?style=for-the-badge)
+![MicrosoftSQLServer](https://img.shields.io/badge/Microsoft%20SQL%20Server-CC2927.svg?style=for-the-badge&logo=Microsoft-SQL-Server&logoColor=white)
+![GitHub forks](https://img.shields.io/github/forks/LeHaGiaBao/Quan-Ly-Nha-Hang?style=for-the-badge)
+
+</div>
+
+**<h2>Cho cơ sở dữ liệu sau:</h2>**
+
+📌NHAHANG(<b>MANH</b>, TENNH, AMTHUC, MAVT, MADG)
 Thông tin nhà hàng gồm: Mã nhà hàng, Tên nhà hàng, Loại ẩm thực, Mã vị trí, Mã đánh giá
 
-📌VITRI(<u>MAVT</u>, QUAN, THANHPHO)
+📌VITRI(<b>MAVT</b>, QUAN, THANHPHO)
 Thông tin vị trí bao gồm: Mã vị trí, Quận, Thành phố
 
-📌DANHGIA(<u>MADG</u>, DANHGIA, GIATB, SLDG)
+📌DANHGIA(<b>MADG</b>, DANHGIA, GIATB, SLDG)
 Thông tin đánh giá bao gồm: Mã đánh giá, Đánh giá, Giá trung bình, Số lượt đánh giá
 
-**<h1>Viết câu lệnh SQL:</h1>**
+**<h2>Viết câu lệnh SQL:</h2>**
 1. Tạo và nhập dữ liệu cho các quan hệ trên.
 2. Khai báo các khóa chính và khóa ngoại của quan hệ
 3. Giá trung bình của các nhà hàng ở Ba Đình phải trên 50000 đồng
