@@ -5,7 +5,6 @@
 ![GitHub repo size](https://img.shields.io/github/repo-size/LeHaGiaBao/Quan-Ly-Nha-Hang?style=for-the-badge)
 ![MicrosoftSQLServer](https://img.shields.io/badge/Microsoft%20SQL%20Server-CC2927.svg?style=for-the-badge&logo=Microsoft-SQL-Server&logoColor=white)
 ![GitHub forks](https://img.shields.io/github/forks/LeHaGiaBao/Quan-Ly-Nha-Hang?style=for-the-badge)
-
 </div>
 
 **<h2>Cho cơ sở dữ liệu sau:</h2>**
